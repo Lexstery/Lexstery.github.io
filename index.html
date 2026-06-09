@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Станислав & Анастасия | 06.07.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<style>
+:root{
+  --primary:#8ab6e6;
+  --primary-light:#d9ecff;
+  --dark:#1a1a2e;
+  --white:#ffffff;
+  --accent:#c9a7eb;
+  --text:#374151;
+  --gradient:linear-gradient(135deg, #8ab6e6 0%, #c9a7eb 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Montserrat,sans-serif;
+  color:var(--text);
+  background:linear-gradient(180deg, #f8fbff 0%, #fff5f8 50%, #f0f8ff 100%);
+  overflow-x:hidden;
+}
+
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:120%;
+  background:linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.6)),
+    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  will-change:transform;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  animation:fadeInUp 1.5s ease-out;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem, 8vw, 6rem);
+  color:var(--dark);
+  text-shadow:0 2px 20px rgba(255,255,255,0.8);
+  letter-spacing:3px;
+}
+.hero p{font-size:1.3rem;margin-top:15px;font-weight:300;letter-spacing:1px}
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 35px;
+  background:var(--gradient);
+  color:white;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:500;
+  box-shadow:0 10px 30px rgba(138,182,230,0.4);
+  transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn:hover{transform:translateY(-5px) scale(1.05);box-shadow:0 15px 40px rgba(138,182,230,0.5)}
+.reveal{opacity:0;transform:translateY(60px);transition:all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-60px);transition:all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(60px);transition:all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+section{padding:100px 20px;position:relative}
+.container{max-width:1100px;margin:auto}
+h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem, 5vw, 3rem);
+  text-align:center;
+  margin-bottom:50px;
+  color:var(--dark);
+  position:relative;
+}
+h2::after{content:'';display:block;width:80px;height:3px;background:var(--gradient);margin:15px auto 0;border-radius:2px}
+.card{
+  background:white;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 15px 50px rgba(0,0,0,.08);
+  transition:transform 0.4s ease, box-shadow 0.4s ease;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:700px;margin:auto}
+.box{
+  background:white;
+  padding:30px 20px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
+  position:relative;
+  overflow:hidden;
+}
+.box::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gradient)}
+.box span{
+  display:block;
+  font-size:clamp(2rem, 5vw, 3rem);
+  font-weight:700;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.box small{font-size:0.9rem;color:#6b7280;text-transform:uppercase;letter-spacing:2px}
+.timeline{display:grid;gap:25px;max-width:700px;margin:auto;position:relative}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:30px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:var(--gradient);
+  border-radius:2px;
+}
+.event{
+  background:white;
+  padding:25px 25px 25px 70px;
+  border-radius:15px;
+  box-shadow:0 8px 30px rgba(0,0,0,.08);
+  position:relative;
+  transition:all 0.3s ease;
+}
+.event::before{
+  content:'';
+  position:absolute;
+  left:22px;
+  top:50%;
+  transform:translateY(-50%);
+  width:18px;
+  height:18px;
+  background:var(--gradient);
+  border-radius:50%;
+  box-shadow:0 0 0 5px rgba(138,182,230,0.3);
+}
+.event:hover{transform:translateX(10px);box-shadow:0 12px 40px rgba(0,0,0,.12)}
+.event strong{font-size:1.3rem;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.gallery-item{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,0,0,.1);
+  aspect-ratio:4/3;
+}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
+.gallery-item:hover img{transform:scale(1.1)}
+.gallery-overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(26,26,46,0.5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay span{color:white;font-size:2rem}
+.lightbox{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.95);
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.lightbox.active{display:flex}
+.lightbox img{max-width:90%;max-height:90%;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.lightbox-close{position:absolute;top:20px;right:30px;font-size:3rem;color:white;cursor:pointer;transition:transform 0.3s ease}
+.lightbox-close:hover{transform:rotate(90deg)}
+</style>
+</head>
+<body>
+
+<audio id="music" loop><source src="music.mp3" type="audio/mpeg"></audio>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+<style>
+.dress-code{text-align:center}
+.dress-code img{max-width:100%;width:400px;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,.1);margin-top:20px}
+.form-wrapper{max-width:600px;margin:auto}
+.form-group{margin-bottom:25px}
+.form-group label{display:block;margin-bottom:8px;font-weight:500;color:var(--dark)}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;
+  padding:16px 20px;
+  border:2px solid #e5e7eb;
+  border-radius:12px;
+  font-size:1rem;
+  font-family:inherit;
+  transition:all 0.3s ease;
+  background:white;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(138,182,230,0.2);
+}
+.form-group textarea{min-height:120px;resize:vertical}
+.checkbox-group{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:10px}
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  background:#f9fafb;
+  border-radius:10px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+.checkbox-item:hover{background:var(--primary-light)}
+.checkbox-item input[type="checkbox"]{width:18px;height:18px;accent-color:var(--primary)}
+.submit-btn{
+  width:100%;
+  padding:18px;
+  border:none;
+  border-radius:50px;
+  background:var(--gradient);
+  color:white;
+  font-size:1.1rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.4s ease;
+  box-shadow:0 10px 30px rgba(138,182,230,0.4);
+}
+.submit-btn:hover{transform:translateY(-3px);box-shadow:0 15px 40px rgba(138,182,230,0.5)}
+.submit-btn:disabled{opacity:0.7;cursor:not-allowed;transform:none}
+.modal{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  z-index:10001;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  backdrop-filter:blur(5px);
+}
+.modal.active{display:flex}
+.modal-content{
+  background:white;
+  padding:50px;
+  border-radius:25px;
+  text-align:center;
+  max-width:400px;
+  animation:modalIn 0.5s ease;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(0.8) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-icon{
+  width:80px;
+  height:80px;
+  background:var(--gradient);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 25px;
+  font-size:2.5rem;
+  color:white;
+}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);margin-bottom:15px}
+.modal p{color:#6b7280;margin-bottom:25px}
+.modal-close{
+  padding:12px 30px;
+  border:none;
+  border-radius:25px;
+  background:var(--gradient);
+  color:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:transform 0.3s ease;
+}
+.modal-close:hover{transform:scale(1.05)}
+.music-btn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:100;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--gradient);
+  border:none;
+  color:white;
+  font-size:1.5rem;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(138,182,230,0.4);
+  transition:all 0.3s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.music-btn:hover{transform:scale(1.1)}
+.music-btn.playing{animation:pulse 1.5s infinite}
+@keyframes pulse{0%, 100%{box-shadow:0 0 0 0 rgba(138,182,230,0.5)}50%{box-shadow:0 0 0 15px rgba(138,182,230,0)}}
+.scroll-indicator{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}
+@keyframes bounce{0%, 20%, 50%, 80%, 100%{transform:translateX(-50%) translateY(0)}40%{transform:translateX(-50%) translateY(-15px)}60%{transform:translateX(-50%) translateY(-7px)}}
+.scroll-indicator span{display:block;width:30px;height:50px;border:2px solid var(--dark);border-radius:20px;position:relative}
+.scroll-indicator span::before{
+  content:'';
+  position:absolute;
+  top:8px;
+  left:50%;
+  transform:translateX(-50%);
+  width:6px;
+  height:10px;
+  background:var(--dark);
+  border-radius:3px;
+  animation:scroll 2s infinite;
+}
+@keyframes scroll{0%{opacity:1; top:8px}100%{opacity:0; top:30px}}
+footer{padding:60px 20px;text-align:center;background:var(--gradient);color:white}
+footer p{font-family:'Cormorant Garamond',serif;font-size:1.5rem}
+footer .hearts{font-size:1.2rem;margin-top:15px;animation:heartbeat 1.5s infinite}
+@keyframes heartbeat{0%, 100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.map-container{border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.1)}
+.map-container iframe{display:block}
+@media(max-width:768px){
+  .countdown{grid-template-columns:repeat(2,1fr)}
+  .timeline::before{left:20px}
+  .event{padding-left:55px}
+  .event::before{left:12px;width:16px;height:16px}
+  section{padding:70px 15px}
+  .card{padding:25px}
+}
+</style>
+
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <h1>Станислав & Анастасия</h1>
+    <p id="guestGreeting"></p>
+    <p>06 июля 2026 • 15:00</p>
+    <a href="#invite" class="btn">Открыть приглашение</a>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+</section>
+
+<section id="invite">
+  <div class="container">
+    <h2 class="reveal" id="inviteTitle">Дорогие гости</h2>
+    <div class="card reveal">
+      <p style="text-align:center;font-size:1.15rem;line-height:2">
+        Мы рады пригласить Вас на самый важный день в нашей жизни — нашу свадьбу! 
+        Ваше присутствие станет лучшим подарком для нас. Мы с нетерпением ждём 
+        этого волшебного момента, чтобы разделить радость с самыми близкими людьми.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="reveal">До свадьбы осталось</h2>
+    <div class="countdown reveal">
+      <div class="box"><span id="days">0</span><small>Дней</small></div>
+      <div class="box"><span id="hours">0</span><small>Часов</small></div>
+      <div class="box"><span id="minutes">0</span><small>Минут</small></div>
+      <div class="box"><span id="seconds">0</span><small>Секунд</small></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="reveal">Программа дня</h2>
+    <div class="timeline">
+      <div class="event reveal-left"><strong>15:00</strong><br>Сбор гостей<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Встреча гостей, приветственные напитки</p></div>
+      <div class="event reveal-right"><strong>16:00</strong><br>Церемония<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Торжественная регистрация брака</p></div>
+      <div class="event reveal-left"><strong>17:00</strong><br>Фотосессия<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Прогулка и памятные фотографии</p></div>
+      <div class="event reveal-right"><strong>18:00</strong><br>Банкет<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Праздничный ужин и тосты</p></div>
+      <div class="event reveal-left"><strong>22:00</strong><br>Торт и танцы<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Разрезание торта, танцевальная программа</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="reveal">Место проведения</h2>
+    <div class="card reveal">
+      <p style="margin-bottom:20px"><strong>📍 Место:</strong> Указать позже</p>
+      <p style="margin-bottom:25px"><strong>🏠 Адрес:</strong> Указать позже</p>
+      <div class="map-container">
+        <iframe src="https://maps.google.com/maps?q=Moscow&t=&z=12&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border:0" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dress-code">
+  <div class="container">
+    <h2 class="reveal">Дресс-код</h2>
+    <div class="card reveal">
+      <p>Мы будем рады видеть Вас в классических или коктейльных нарядах.</p>
+      <p style="margin-top:10px;color:#6b7280">Предпочтительные цвета: пастельные, голубой, розовый, бежевый</p>
+      <img src="dresscode.jpg" alt="Дресс-код" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop'">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="reveal">Наша галерея</h2>
+    <div class="gallery reveal">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photo1.jpg" alt="Фото 1" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop'">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photo2.jpg" alt="Фото 2" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop'">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photo3.jpg" alt="Фото 3" onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600&auto=format&fit=crop'">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photo4.jpg" alt="Фото 4" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop'">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photo5.jpg" alt="Фото 5" onerror="this.src='https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=600&auto=format&fit=crop'">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="photo6.jpg" alt="Фото 6" onerror="this.src='https://images.unsplash.com/photo-1460978812857-470ed1c77af0?q=80&w=600&auto=format&fit=crop'">
+        <div class="gallery-overlay"><span>🔍</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <div class="container">
+    <h2 class="reveal">Подтверждение присутствия</h2>
+    <div class="card reveal">
+      <form id="rsvpForm" class="form-wrapper">
+        <div class="form-group">
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
+        </div>
+        <div class="form-group">
+          <label for="attendance">Сможете присутствовать? *</label>
+          <select id="attendance" name="attendance" required>
+            <option value="">Выберите вариант</option>
+            <option value="Да, обязательно буду">Да, обязательно буду</option>
+            <option value="Пока не уверен(а)">Пока не уверен(а)</option>
+            <option value="К сожалению, не смогу">К сожалению, не смогу</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="guests">Количество гостей</label>
+          <select id="guests" name="guests">
+            <option value="1">1 человек</option>
+            <option value="2">2 человека</option>
+            <option value="3">3 человека</option>
+            <option value="4">4 человека</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Предпочтения по напиткам</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" name="drinks" value="Шампанское"> Шампанское</label>
+            <label class="checkbox-item"><input type="checkbox" name="drinks" value="Водка"> Водка</label>
+            <label class="checkbox-item"><input type="checkbox" name="drinks" value="Виски"> Виски</label>
+            <label class="checkbox-item"><input type="checkbox" name="drinks" value="Безалкогольные"> Безалкогольные</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="comment">Пожелания молодожёнам</label>
+          <textarea id="comment" name="comment" placeholder="Напишите ваши тёплые слова"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Отправить ответ</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>С любовью, Станислав и Анастасия</p>
+  <div class="hearts">💕 💒 💕</div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img src="" alt="Full size" id="lightboxImg">
+</div>
+
+<div class="modal" id="successModal">
+  <div class="modal-content">
+    <div class="modal-icon">✓</div>
+    <h3>Спасибо за ответ!</h3>
+    <p>Мы получили ваше подтверждение и с нетерпением ждём встречи!</p>
+    <button class="modal-close" onclick="closeModal()">Закрыть</button>
+  </div>
+</div>
+
+<script>
+// ============================================
+// EMAILJS CONFIGURATION
+// Инструкция по настройке:
+// 1. Зарегистрируйтесь на https://www.emailjs.com/
+// 2. Создайте Email Service (Gmail, Outlook и т.д.)
+// 3. Создайте Email Template с переменными: name, email, attendance, guests, drinks, food, comment
+// 4. Скопируйте ваши ключи и замените заглушки ниже:
+const EMAILJS_CONFIG = {
+  publicKey: 'RJUJlc7AEy9NojiHa',
+  serviceId: 'wedding',
+  templateId: 'template_alcdhng'
+};
+emailjs.init(EMAILJS_CONFIG.publicKey);
+// ============================================
+
+// Guest greeting from URL
+const params = new URLSearchParams(window.location.search);
+const guest = params.get("guest");
+if(guest){
+  document.getElementById("guestGreeting").innerHTML = 
+    `Дорогой(ая) <strong>${guest}</strong>! Мы будем счастливы видеть Вас на нашей свадьбе.`;
+  document.getElementById("inviteTitle").innerHTML = `Дорогой(ая) ${guest}`;
+}
+
+// Countdown timer
+const weddingDate = new Date("2026-07-06T15:00:00").getTime();
+function updateCountdown(){
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
+  if(distance < 0){
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "0";
+    document.getElementById("minutes").innerText = "0";
+    document.getElementById("seconds").innerText = "0";
+    return;
+  }
+  document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+  document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  document.getElementById("seconds").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Music toggle
+const musicBtn = document.getElementById("musicBtn");
+const music = document.getElementById("music");
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+    musicBtn.classList.add("playing");
+    musicBtn.innerHTML = "🎵";
+  } else {
+    music.pause();
+    musicBtn.classList.remove("playing");
+    musicBtn.innerHTML = "🔇";
+  }
+}
+
+// Parallax effect
+window.addEventListener("scroll", function(){
+  const scrolled = window.pageYOffset;
+  const heroBg = document.getElementById("heroBg");
+  if(heroBg){
+    heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+  }
+});
+
+// Scroll animations
+function revealOnScroll(){
+  const reveals = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
+  reveals.forEach(element => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+    if(elementTop < windowHeight - 150){
+      element.classList.add("active");
+    }
+  });
+}
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+
+
+// Lightbox
+function openLightbox(element){
+  const img = element.querySelector("img");
+  document.getElementById("lightboxImg").src = img.src;
+  document.getElementById("lightbox").classList.add("active");
+}
+function closeLightbox(){
+  document.getElementById("lightbox").classList.remove("active");
+}
+
+// Modal
+function closeModal(){
+  document.getElementById("successModal").classList.remove("active");
+}
+
+// Form submission with EmailJS
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Отправка...";
+  
+  // Collect drinks
+  const drinks = [];
+  document.querySelectorAll('input[name="drinks"]:checked').forEach(cb => {
+    drinks.push(cb.value);
+  });
+  
+  const templateParams = {
+    name: document.getElementById("name").value,
+    attendance: document.getElementById("attendance").value,
+    guests: document.getElementById("guests").value,
+    drinks: drinks.join(", ") || "Не выбраны",
+    comment: document.getElementById("comment").value || "Нет"
+  };
+  
+  emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
+    .then(function() {
+      document.getElementById("successModal").classList.add("active");
+      document.getElementById("rsvpForm").reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Отправить ответ";
+    })
+    .catch(function(error) {
+      alert("Ошибка отправки. Проверьте настройки EmailJS.\n\nОшибка: " + error.text);
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Отправить ответ";
+    });
+});
+
+// Keyboard support for lightbox/modal
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeLightbox();
+    closeModal();
+  }
+});
+</script>
+</body>
+</html>
