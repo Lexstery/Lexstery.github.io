@@ -41,7 +41,7 @@ body{
   width:100%;
   height:120%;
   background:linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.6)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop');
+    url('main.jpg');
   background-size:cover;
   background-position:center;
   background-attachment:fixed;
@@ -360,7 +360,7 @@ footer .hearts{font-size:1.2rem;margin-top:15px;animation:heartbeat 1.5s infinit
   <div class="hero-content">
     <h1>Станислав & Анастасия</h1>
     <p id="guestGreeting"></p>
-    <p>06 июля 2026 • 15:00</p>
+    <p><strong>06 июля 2026 • 15:00</strong></p>
     <a href="#invite" class="btn">Открыть приглашение</a>
   </div>
   <div class="scroll-indicator"><span></span></div>
@@ -395,11 +395,10 @@ footer .hearts{font-size:1.2rem;margin-top:15px;animation:heartbeat 1.5s infinit
   <div class="container">
     <h2 class="reveal">Программа дня</h2>
     <div class="timeline">
-      <div class="event reveal-left"><strong>15:00</strong><br>Сбор гостей<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Встреча гостей, приветственные напитки</p></div>
-      <div class="event reveal-right"><strong>16:00</strong><br>Церемония<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Торжественная регистрация брака</p></div>
-      <div class="event reveal-left"><strong>17:00</strong><br>Фотосессия<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Прогулка и памятные фотографии</p></div>
-      <div class="event reveal-right"><strong>18:00</strong><br>Банкет<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Праздничный ужин и тосты</p></div>
-      <div class="event reveal-left"><strong>22:00</strong><br>Торт и танцы<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Разрезание торта, танцевальная программа</p></div>
+      <div class="event reveal-left"><strong>15:00</strong><br>Сбор гостей<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Встреча гостей</p></div>
+      <div class="event reveal-right"><strong>15:40</strong><br>Церемония<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Торжественная регистрация брака</p></div>
+      <div class="event reveal-left"><strong>16:00</strong><br>Фотосессия<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Прогулка и памятные фотографии</p></div>
+      <div class="event reveal-right"><strong>19:00</strong><br>Банкет<p style="color:#6b7280;font-size:0.9rem;margin-top:5px">Праздничный ужин и тосты</p></div>
     </div>
   </div>
 </section>
@@ -408,10 +407,14 @@ footer .hearts{font-size:1.2rem;margin-top:15px;animation:heartbeat 1.5s infinit
   <div class="container">
     <h2 class="reveal">Место проведения</h2>
     <div class="card reveal">
-      <p style="margin-bottom:20px"><strong>📍 Место:</strong> Указать позже</p>
-      <p style="margin-bottom:25px"><strong>🏠 Адрес:</strong> Указать позже</p>
-      <div class="map-container">
-        <iframe src="https://maps.google.com/maps?q=Moscow&t=&z=12&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border:0" allowfullscreen loading="lazy"></iframe>
+      <p style="margin-bottom:20px"><strong>📍 Место:</strong> Дворец бракосочетания № 1</p>
+      <p style="margin-bottom:25px"><strong>🏠 Адрес:</strong> Английская наб., 28, Санкт-Петербург</p>
+      <div class="map-container" style="position:relative;overflow:hidden; border-style: none;">
+        <a href="https://yandex.ru/maps/org/dvorets_brakosochetaniya_1/1311913400/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Дворец бракосочетания № 1</a>
+        <a href="https://yandex.ru/maps/2/saint-petersburg/category/registery_office/184107242/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">ЗАГС в Санкт‑Петербурге</a>
+        <iframe src="https://yandex.ru/map-widget/v1/org/dvorets_brakosochetaniya_1/1311913400/?ll=30.297196%2C59.928005&z=13.99" width="100%" height="350" frameborder="0" allowfullscreen="true" style="position:relative;">
+          
+        </iframe>
       </div>
     </div>
   </div>
@@ -422,7 +425,6 @@ footer .hearts{font-size:1.2rem;margin-top:15px;animation:heartbeat 1.5s infinit
     <h2 class="reveal">Дресс-код</h2>
     <div class="card reveal">
       <p>Мы будем рады видеть Вас в классических или коктейльных нарядах.</p>
-      <p style="margin-top:10px;color:#6b7280">Предпочтительные цвета: пастельные, голубой, розовый, бежевый</p>
       <img src="dresscode.jpg" alt="Дресс-код" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop'">
     </div>
   </div>
@@ -433,27 +435,27 @@ footer .hearts{font-size:1.2rem;margin-top:15px;animation:heartbeat 1.5s infinit
     <h2 class="reveal">Наша галерея</h2>
     <div class="gallery reveal">
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photo1.jpg" alt="Фото 1" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop'">
+        <img src="photo1.jpg" alt="Фото 1" onerror="this.src='1.png'">
         <div class="gallery-overlay"><span>🔍</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photo2.jpg" alt="Фото 2" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop'">
+        <img src="photo2.jpg" alt="Фото 2" onerror="this.src='2.png'">
         <div class="gallery-overlay"><span>🔍</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photo3.jpg" alt="Фото 3" onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=600&auto=format&fit=crop'">
+        <img src="photo3.jpg" alt="Фото 3" onerror="this.src='3.png'">
         <div class="gallery-overlay"><span>🔍</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photo4.jpg" alt="Фото 4" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop'">
+        <img src="photo4.jpg" alt="Фото 4" onerror="this.src='4.png'">
         <div class="gallery-overlay"><span>🔍</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photo5.jpg" alt="Фото 5" onerror="this.src='https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac?q=80&w=600&auto=format&fit=crop'">
+        <img src="photo5.jpg" alt="Фото 5" onerror="this.src='5.png'">
         <div class="gallery-overlay"><span>🔍</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox(this)">
-        <img src="photo6.jpg" alt="Фото 6" onerror="this.src='https://images.unsplash.com/photo-1460978812857-470ed1c77af0?q=80&w=600&auto=format&fit=crop'">
+        <img src="photo6.jpg" alt="Фото 6" onerror="this.src='6.png'">
         <div class="gallery-overlay"><span>🔍</span></div>
       </div>
     </div>
@@ -573,6 +575,21 @@ setInterval(updateCountdown, 1000);
 // Music toggle
 const musicBtn = document.getElementById("musicBtn");
 const music = document.getElementById("music");
+
+// Autoplay on first interaction (browsers block autoplay)
+let musicStarted = false;
+function startMusicOnce(){
+  if(!musicStarted){
+    music.play().then(() => {
+      musicBtn.classList.add("playing");
+      musicBtn.innerHTML = "🎵";
+      musicStarted = true;
+    }).catch(() => {});
+  }
+}
+document.addEventListener("click", startMusicOnce, { once: true });
+document.addEventListener("scroll", startMusicOnce, { once: true });
+
 function toggleMusic(){
   if(music.paused){
     music.play();
